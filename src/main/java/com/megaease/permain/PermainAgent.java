@@ -7,25 +7,19 @@ import java.security.ProtectionDomain;
 
 public class PermainAgent {
 
-    private static Instrumentation INST;
-
     public static void premain(String agentArgs, Instrumentation inst) {
-        INST = inst;
-        process();
-    }
-
-    private static void process() {
-        INST.addTransformer(new ClassFileTransformer() {
-
+        inst.addTransformer(new ClassFileTransformer() {
             @Override
             public byte[] transform(ClassLoader loader, String className,
                                     Class<?> clazz,
                                     ProtectionDomain protectionDomain,
                                     byte[] byteCode) throws IllegalClassFormatException {
+
+//                clazz.getMethods();
+
                 System.out.println(String.format("Process by ClassFileTransformer,target class = %s", className));
                 return byteCode;
             }
         });
     }
-
 }

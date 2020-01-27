@@ -7,15 +7,8 @@ import java.security.ProtectionDomain;
 
 public class AgentmainAgent {
 
-    private static Instrumentation INST;
-
     public static void agentmain(String agentArgs, Instrumentation inst) {
-        INST = inst;
-        process();
-    }
-
-    private static void process() {
-        INST.addTransformer(new ClassFileTransformer() {
+        inst.addTransformer(new ClassFileTransformer() {
 
             @Override
             public byte[] transform(ClassLoader loader, String className,
@@ -27,7 +20,7 @@ public class AgentmainAgent {
             }
         }, true);
         try {
-            INST.retransformClasses(Class.forName("com.megaease.agentmain.sample.AgentTargetSample"));
+            inst.retransformClasses(Class.forName("com.megaease.agentmain.sample.AgentTargetSample"));
         } catch (Exception e) {
             e.printStackTrace();
         }

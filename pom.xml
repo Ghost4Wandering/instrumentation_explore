@@ -33,7 +33,7 @@
                     <archive>
                         <manifestEntries>
                             <!--<Premain-Class>com.megaease.permain.PermainAgent</Premain-Class>-->
-                            <Agent-Class>com.megaease.agentmain.AgentmainAgent</Agent-Class>-->
+                            <Agent-Class>com.megaease.agentmain.AgentmainAgent</Agent-Class>
                             <Can-Redefine-Classes>true</Can-Redefine-Classes>
                             <Can-Retransform-Classes>true</Can-Retransform-Classes>
                         </manifestEntries>
