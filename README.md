@@ -20,11 +20,18 @@ javaagent JAR文件清单必须包含 Premain-Class属性，属性的值为agent
 代理类必须实现premain 方法，premain方法和main方法一样分别是代理和应用的入口点。
 JVM初始化完成后首先调用代理的premain函数，然后调用应用的main函数，premain方法必须返回后进程才能启动。
 
+调用的大概的流程如下：
+![image](https://raw.githubusercontent.com/Ghost4Wandering/j.icon/master/instrumentation/premain.png)
+
+
 ### JVM启动后启动
 实现可以提供在JVM启动之后再启动代理的机制。代理如何启动的细节特定于实现，通常应用程序已经启动，并且它的main方法已经被调用。
 如果实现支持在JVM启动后启动代理，代理必须满足以下条件：
 1. 清单文件包含Agent-Class属性，属性的值为代理类全名
 2. 代理类必须实现 public static agentmain 方法
+
+调用的大概的流程如下：
+![image](https://raw.githubusercontent.com/Ghost4Wandering/j.icon/master/instrumentation/agentclass.png)
 
 ## Instrumentation API
 * void addTransformer(ClassFileTransformer transformer, boolean canRetransform)
