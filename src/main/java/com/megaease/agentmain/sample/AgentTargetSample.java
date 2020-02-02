@@ -3,9 +3,10 @@ package com.megaease.agentmain.sample;
 public class AgentTargetSample {
 
     public static void main(String[] args) throws Exception {
+        AgentMainService agentMainService = new AgentMainService();
         while (true) {
             Thread.sleep(1000);
-            System.out.println("James say hello world!");
+            agentMainService.doService();
         }
     }
 
