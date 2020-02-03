@@ -1,11 +1,11 @@
-package com.megaease.agentmain.sample;
+package com.megaease.agentmain;
 
 import com.sun.tools.attach.VirtualMachine;
 import com.sun.tools.attach.VirtualMachineDescriptor;
 
 import java.util.List;
 
-public class AgentmainAttachMain {
+public class AgentAttacher {
 
     public static void main(String[] args) throws Exception {
         List<VirtualMachineDescriptor> list = VirtualMachine.list();
@@ -17,5 +17,4 @@ public class AgentmainAttachMain {
             }
         }
     }
-
 }

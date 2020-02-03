@@ -16,22 +16,25 @@ javaagent以JAR包的形式部署，JAR文件清单中的属性指定要加载�
 ### 通过在命令行指定参数启动
 启动javaagent 的命令行参数：-javaagent:<jarpath>[=<options>]
 
-javaagent JAR文件清单必须包含 Premain-Class属性，属性的值为agent class的全路径名（包名+类名）。
-代理类必须实现premain 方法，premain方法和main方法一样分别是代理和应用的入口点。
+javaagent JAR文件清单必须包含 Premain-Class/Agent-Class属性，属性的值为agent class的全路径名（包名+类名）。
+代理类必须实现premain/agentmain 方法，premain/agentmain 方法和main方法一样分别是代理和应用的入口点。
+
+### premain方式
+
 JVM初始化完成后首先调用代理的premain函数，然后调用应用的main函数，premain方法必须返回后进程才能启动。
 
-调用的大概的流程如下：
-![image](https://raw.githubusercontent.com/Ghost4Wandering/j.icon/master/instrumentation/premain.png)
+调用的大致的流程如下：
+![image](https://raw.githubusercontent.com/Ghost4Wandering/j.icon/master/instrumentation/agentclass.png)
 
 
-### JVM启动后启动
+### agentmain方式
 实现可以提供在JVM启动之后再启动代理的机制。代理如何启动的细节特定于实现，通常应用程序已经启动，并且它的main方法已经被调用。
 如果实现支持在JVM启动后启动代理，代理必须满足以下条件：
 1. 清单文件包含Agent-Class属性，属性的值为代理类全名
 2. 代理类必须实现 public static agentmain 方法
 
 调用的大概的流程如下：
-![image](https://raw.githubusercontent.com/Ghost4Wandering/j.icon/master/instrumentation/agentclass.png)
+![image](https://raw.githubusercontent.com/Ghost4Wandering/j.icon/master/instrumentation/premain.png)
 
 
 ## Instrumentation, ClassFileTransformer, ClassDefinition
@@ -49,7 +52,7 @@ JVM初始化完成后首先调用代理的premain函数，然后调用应用的m
 
 * void retransformClasses(Class<?>... classes) throws UnmodifiableClassException
 
-已加载类进行重新转换的方法，重新转换的类会被回调到ClassFileTransformer的列表中进行处理，想深入理解建议阅读API注释。
+已加载类进行重新转换的方法，主要用于agentmain方式处理。
 
 * void redefineClasses(ClassDefinition... definitions) throws ClassNotFoundException, UnmodifiableClassException
 

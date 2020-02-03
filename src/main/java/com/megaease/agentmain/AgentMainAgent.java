@@ -1,13 +1,9 @@
 package com.megaease.agentmain;
 
-import com.megaease.agentmain.sample.DynamicClassLoader;
-
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.lang.instrument.ClassDefinition;
 import java.lang.instrument.ClassFileTransformer;
-import java.lang.instrument.IllegalClassFormatException;
 import java.lang.instrument.Instrumentation;
 import java.security.ProtectionDomain;
 
