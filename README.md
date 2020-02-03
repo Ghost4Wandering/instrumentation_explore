@@ -33,7 +33,10 @@ JVM初始化完成后首先调用代理的premain函数，然后调用应用的m
 调用的大概的流程如下：
 ![image](https://raw.githubusercontent.com/Ghost4Wandering/j.icon/master/instrumentation/agentclass.png)
 
-## Instrumentation API
+
+## Instrumentation, ClassFileTransformer, ClassDefinition
+
+## [Instrumentation API](https://docs.oracle.com/javase/8/docs/api/java/lang/instrument/Instrumentation.html)
 * void addTransformer(ClassFileTransformer transformer, boolean canRetransform)
 
 注册ClassFileTransformer实例，注册多个会按照注册顺序进行调用。
@@ -44,18 +47,19 @@ JVM初始化完成后首先调用代理的premain函数，然后调用应用的m
 
 移除(反注册)ClassFileTransformer实例。
 
-* boolean isRetransformClassesSupported()
-
-返回当前JVM配置是否支持类重新转换的特性。
-
 * void retransformClasses(Class<?>... classes) throws UnmodifiableClassException
 
 已加载类进行重新转换的方法，重新转换的类会被回调到ClassFileTransformer的列表中进行处理，想深入理解建议阅读API注释。
 
-* boolean isRedefineClassesSupported()
-
-返回当前JVM配置是否支持重定义类（修改类的字节码）的特性。
-
 * void redefineClasses(ClassDefinition... definitions) throws ClassNotFoundException, UnmodifiableClassException
 
 重定义类，也就是对已经加载的类进行重定义，ClassDefinition类型的入参包括了对应的类型Class<?>对象和字节码文件对应的字节数组。
+
+
+## 引用 (Java 8)
+
+[instrumention package (Oracle desc) ](https://docs.oracle.com/javase/8/docs/api/java/lang/instrument/package-summary.html)
+
+[ClassFileTransformer API (Oracle API)](https://docs.oracle.com/javase/8/docs/api/java/lang/instrument/ClassFileTransformer.html)
+
+[Instrumentation API (Oracle API)](https://docs.oracle.com/javase/8/docs/api/java/lang/instrument/Instrumentation.html)

@@ -1,4 +1,4 @@
-package com.megaease.aop;
+package com.megaease.aop.sample;
 
 public interface BaseService {
 
