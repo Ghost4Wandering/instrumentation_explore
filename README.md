@@ -24,7 +24,7 @@ javaagent JAR文件清单必须包含 Premain-Class/Agent-Class属性，属性�
 JVM初始化完成后首先调用代理的premain函数，然后调用应用的main函数，premain方法必须返回后进程才能启动。
 
 调用的大致的流程如下：
-![image](https://raw.githubusercontent.com/Ghost4Wandering/j.icon/master/instrumentation/agentclass.png)
+![image](https://raw.githubusercontent.com/Ghost4Wandering/j.icon/master/instrumentation/agentclass-2.png)
 
 
 ### agentmain方式
