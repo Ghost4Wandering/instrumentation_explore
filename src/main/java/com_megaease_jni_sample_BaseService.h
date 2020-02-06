@@ -17,10 +17,10 @@ JNIEXPORT jstring JNICALL Java_com_megaease_jni_sample_BaseService_doService
 
 /*
  * Class:     com_megaease_jni_sample_BaseService
- * Method:    doService2
+ * Method:    test_doService
  * Signature: (Ljava/lang/String;)Ljava/lang/String;
  */
-JNIEXPORT jstring JNICALL Java_com_megaease_jni_sample_BaseService_doService2
+JNIEXPORT jstring JNICALL Java_com_megaease_jni_sample_BaseService_test_1doService
   (JNIEnv *, jclass, jstring);
 
 #ifdef __cplusplus
