@@ -14,7 +14,7 @@ public class PermainAgent {
                                     Class<?> clazz,
                                     ProtectionDomain protectionDomain,
                                     byte[] byteCode) throws IllegalClassFormatException {
-                System.out.println(String.format("Process by ClassFileTransformer,target class = %s", className));
+                System.out.println(String.format("class name is : %s", className));
                 return byteCode;
             }
         });
