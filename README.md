@@ -11,7 +11,7 @@ Instrumentation 的最大作用就是类定义的动态改变和操作。
 
 下面是三种相应实现的方式：
 
-### premain方式
+### premain方式 （java 5开始）
 代理必须满足以下条件：
 1. MANIFAST 文件中包含Premain-Class属性，属性的值为代理类全名
 2. 代理类必须实现 public static premain 方法
