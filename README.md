@@ -49,8 +49,6 @@ Instrumentation 的最大作用就是类定义的动态改变和操作。
 一旦可以找到，那么调用这个函数，整个解析过程就结束了；如果没有找到，那么虚拟机将会做进一步的解析工作。我们将利用 Java native 接口最基本的解析方式 , 去找本地代码中的函数 :
 ``void Java_package_class_method(jclass theClass, jobject thiz);``
 
-## Instrumentation, ClassFileTransformer, ClassDefinition
-
 ## [Instrumentation API](https://docs.oracle.com/javase/8/docs/api/java/lang/instrument/Instrumentation.html)
 * void addTransformer(ClassFileTransformer transformer, boolean canRetransform)
 
