@@ -50,7 +50,37 @@ Instrumentation 的最大作用就是类定义的动态改变和操作。
 ``void Java_package_class_method(jclass theClass, jobject thiz);``
 
 ## [Instrumentation API](https://docs.oracle.com/javase/8/docs/api/java/lang/instrument/Instrumentation.html)
-* void addTransformer(ClassFileTransformer transformer, boolean canRetransform)
+
+void	addTransformer(ClassFileTransformer transformer)
+Registers the supplied transformer.
+void	addTransformer(ClassFileTransformer transformer, boolean canRetransform)
+Registers the supplied transformer.
+void	appendToBootstrapClassLoaderSearch(JarFile jarfile)
+Specifies a JAR file with instrumentation classes to be defined by the bootstrap class loader.
+void	appendToSystemClassLoaderSearch(JarFile jarfile)
+Specifies a JAR file with instrumentation classes to be defined by the system class loader.
+Class[]	getAllLoadedClasses()
+Returns an array of all classes currently loaded by the JVM.
+Class[]	getInitiatedClasses(ClassLoader loader)
+Returns an array of all classes for which loader is an initiating loader.
+long	getObjectSize(Object objectToSize)
+Returns an implementation-specific approximation of the amount of storage consumed by the specified object.
+boolean	isModifiableClass(Class<?> theClass)
+Determines whether a class is modifiable by retransformation or redefinition.
+boolean	isNativeMethodPrefixSupported()
+Returns whether the current JVM configuration supports setting a native method prefix.
+boolean	isRedefineClassesSupported()
+Returns whether or not the current JVM configuration supports redefinition of classes.
+boolean	isRetransformClassesSupported()
+Returns whether or not the current JVM configuration supports retransformation of classes.
+void	redefineClasses(ClassDefinition... definitions)
+Redefine the supplied set of classes using the supplied class files.
+boolean	removeTransformer(ClassFileTransformer transformer)
+Unregisters the supplied transformer.
+void	retransformClasses(Class<?>... classes)
+Retransform the supplied set of classes.
+void	setNativeMethodPrefix(ClassFileTransformer transformer, String prefix)
+This method modifies the failure handling of native method resolution by allowing retry with a prefix applied to the name.
 
 ## 引用 (Java 8)
 
