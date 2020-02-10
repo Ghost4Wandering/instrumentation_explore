@@ -9,14 +9,6 @@ extern "C" {
 #endif
 /*
  * Class:     com_megaease_jni_sample_BaseService
- * Method:    doService
- * Signature: (Ljava/lang/String;)Ljava/lang/String;
- */
-JNIEXPORT jstring JNICALL Java_com_megaease_jni_sample_BaseService_doService
-  (JNIEnv *, jclass, jstring);
-
-/*
- * Class:     com_megaease_jni_sample_BaseService
  * Method:    test_doService
  * Signature: (Ljava/lang/String;)Ljava/lang/String;
  */

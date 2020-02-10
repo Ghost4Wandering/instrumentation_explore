@@ -7,4 +7,6 @@ public class BaseService {
     }
 
     public static native String doService(String str);
+
+    public static native String test_doService(String str);
 }
