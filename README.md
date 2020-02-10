@@ -15,7 +15,7 @@ JVM初始化完成后首先调用代理的premain函数，然后调用应用的m
 2. 代理类必须实现 public static premain 方法
 
 调用的大致的流程如下：
-![image](https://raw.githubusercontent.com/Ghost4Wandering/j.icon/master/instrumentation/agentclass-2.png)
+![image](https://raw.githubusercontent.com/Ghost4Wandering/j.icon/master/instrumentation/premain_2.png)
 
 
 ### agentmain方式 (java 6后增加)
