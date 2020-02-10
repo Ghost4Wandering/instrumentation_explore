@@ -9,9 +9,9 @@ Java Instrumentation指的是可以用独立于应用程序之外的代理（age
 Instrumentation 的最大作用就是类定义的动态改变和操作。
 实现更为灵活的运行时虚拟机监控和 Java 类操作了。
 
+下面是三种相应实现的方式：
 
 ### premain方式
-JVM初始化完成后首先调用代理的premain函数，然后调用应用的main函数，premain方法必须返回后进程才能启动。
 代理必须满足以下条件：
 1. 清单文件包含Premain-Class属性，属性的值为代理类全名
 2. 代理类必须实现 public static premain 方法
