@@ -13,7 +13,7 @@ Instrumentation 的最大作用就是类定义的动态改变和操作。
 
 ### premain方式
 代理必须满足以下条件：
-1. 清单文件包含Premain-Class属性，属性的值为代理类全名
+1. MANIFAST 文件中包含Premain-Class属性，属性的值为代理类全名
 2. 代理类必须实现 public static premain 方法
 
 调用的大致的流程如下：
@@ -23,7 +23,7 @@ Instrumentation 的最大作用就是类定义的动态改变和操作。
 ### agentmain方式 (java 6后增加)
 实现可以提供在JVM启动之后再启动代理的机制。代理如何启动的细节特定于实现，通常应用程序已经启动，并且它的main方法已经被调用。
 如果实现支持在JVM启动后启动代理，代理必须满足以下条件：
-1. 清单文件包含Agent-Class属性，属性的值为代理类全名
+1. MANIFAST 文件中包含Agent-Class属性，属性的值为代理类全名
 2. 代理类必须实现 public static agentmain 方法
 
 调用的大概的流程如下：
@@ -32,6 +32,22 @@ Instrumentation 的最大作用就是类定义的动态改变和操作。
 ### 本地方法的Instrumentation (java 6后增加)
 在 java 6 中，新的 Native Instrumentation 提出了一个新的 native code 的解析方式，作为原有的 native method 的解析方式的一个补充。
 这就是在的 java.lang.instrument 包里，添加了对 native 代码的 instrument 方式 —— 设置 prefix。
+
+是用本地方法instrumentation代理必须满足以下条件：
+1. MANIFAST 文件中Can-Set-Native-Method-Prefix 设置为true
+2. 使用premain/agentmain
+
+使用本地方法的Instrumentation的大概流程：
+对于某一个 package 内的一个 class 当中的一个 native method 来说，首先，假设我们对这个函数的 transformer 设置了 native 的 prefix“another”，它将这个函数接口解释成
+
+由 Java 的函数接口
+``native void method()``
+和上述 prefix"another"，去寻找本地代码中的函数
+
+``void Java_package_class_another_method(jclass theClass, jobject thiz);``
+
+一旦可以找到，那么调用这个函数，整个解析过程就结束了；如果没有找到，那么虚拟机将会做进一步的解析工作。我们将利用 Java native 接口最基本的解析方式 , 去找本地代码中的函数 :
+``void Java_package_class_method(jclass theClass, jobject thiz);``
 
 ## Instrumentation, ClassFileTransformer, ClassDefinition
 
