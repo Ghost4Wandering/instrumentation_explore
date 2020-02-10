@@ -25,7 +25,7 @@ JVM初始化完成后首先调用代理的premain函数，然后调用应用的m
 2. 代理类必须实现 public static agentmain 方法
 
 调用的大概的流程如下：
-![image](https://raw.githubusercontent.com/Ghost4Wandering/j.icon/master/instrumentation/premain.png)
+![image](https://raw.githubusercontent.com/Ghost4Wandering/j.icon/master/instrumentation/agent_main_3.png)
 
 ### 本地方法的Instrumentation (java 6后增加)
 在 java 6 中，新的 Native Instrumentation 提出了一个新的 native code 的解析方式，作为原有的 native method 的解析方式的一个补充。
